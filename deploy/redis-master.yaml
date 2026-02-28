@@ -21,6 +21,10 @@ metadata:
   name: redis-master
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      role: master
   template:
     metadata:
       labels:
@@ -30,7 +34,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: redis:4.0
+        image: redis:6.2
         args: [
           "/usr/local/bin/redis-server",
           "--appendonly", "yes",
