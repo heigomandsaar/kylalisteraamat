@@ -34,3 +34,4 @@ jobs:
           kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/frontend.yaml
           kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/redis-master.yaml
           kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/redis-slave.yaml
+          kubectl --kubeconfig /home/heigo/.kube/config.github -n guestbook apply -f deploy/frontend-ingress.yaml
