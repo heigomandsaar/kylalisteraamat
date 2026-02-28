@@ -1,0 +1,36 @@
+name: Deploy to K3s
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted   # <-- uses your VM runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.28.0'
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > /home/heigo/.kube/config.github
+          chmod 600 $HOME/.kube/config.github
+          
+          
+      - name: Verify cluster access
+        run: |
+          kubectl --kubeconfig /home/heigo/.kube/config.github cluster-info
+          kubectl --kubeconfig /home/heigo/.kube/config.github get nodes
+           
+      - name: Deploy app
+        run: |
+          kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/frontend.yaml
+          kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/redis-master.yaml
+          kubectl --kubeconfig /home/heigo/.kube/config.github apply -f deploy/redis-slave.yaml
