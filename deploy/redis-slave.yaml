@@ -23,7 +23,7 @@ spec:
   selector:
     matchLabels:
       app: redis
-      role: master
+      role: slave
   template:
     metadata:
       labels:
