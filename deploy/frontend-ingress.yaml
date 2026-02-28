@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   namespace: guestbook
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
   - host: guestbook.local
     http:
