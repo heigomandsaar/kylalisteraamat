@@ -36,6 +36,10 @@ jobs:
       - name: Deploy Ingress
         run: |
           kubectl -n guestbook apply -f deploy/frontend-ingress.yaml
+          
+      - name: deploy RBAC role
+        run: |
+          kubectl -n guestbook apply -f deploy/guestbook-role.yaml        
 
       - name: Wait for rollouts
         run: |
