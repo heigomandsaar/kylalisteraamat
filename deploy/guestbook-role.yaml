@@ -6,10 +6,18 @@ metadata:
 rules:
   - apiGroups: ["", "apps"]
     resources:
-      - deployments
-      - services
       - pods
+      - services
+      - endpoints
       - configmaps
+      - secrets
+      - deployments
+      - replicasets
+      - daemonsets
+      - statefulsets
+      - jobs
+      - cronjobs
+      - horizontalpodautoscalers
     verbs:
       - get
       - list
