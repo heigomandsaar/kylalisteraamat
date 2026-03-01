@@ -16,9 +16,9 @@ jobs:
       - name: Configure kubeconfig
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > $HOME/.kube/config.github.uus
-          chmod 600 $HOME/.kube/config.github.uus
-          export KUBECONFIG=$HOME/.kube/config.github.uus
+          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > $HOME/.kube/config.guestbook-ci
+          chmod 600 $HOME/.kube/config.guestbook-ci
+          export KUBECONFIG=$HOME/.kube/config.guestbook-ci
 
       - name: Ensure guestbook namespace exists
         run: |
