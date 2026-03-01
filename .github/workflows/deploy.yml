@@ -32,7 +32,6 @@ jobs:
       - name: Deploy Frontend
         run: |
           kubectl -n guestbook apply -f deploy/frontend.yaml
-          kubectl -n guestbook apply -f deploy/frontend-service.yaml
 
       - name: Deploy Ingress
         run: |
