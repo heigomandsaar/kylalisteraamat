@@ -36,7 +36,7 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 100Mi
+            memory: 105Mi
         env:
         - name: REDIS_SLAVE_REPLICAS
           value: "2"
