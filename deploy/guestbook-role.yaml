@@ -18,6 +18,7 @@ rules:
       - jobs
       - cronjobs
       - horizontalpodautoscalers
+      - roles
     verbs:
       - get
       - list
