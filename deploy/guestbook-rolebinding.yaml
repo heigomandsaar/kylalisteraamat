@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: guestbook-deployer-binding
+  namespace: guestbook
+subjects:
+  - kind: ServiceAccount
+    name: guestbook-ci
+    namespace: guestbook
+roleRef:
+  kind: Role
+  name: guestbook-deployer
+  apiGroup: rbac.authorization.k8s.io
